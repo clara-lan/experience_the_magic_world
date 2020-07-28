@@ -12,14 +12,18 @@ require('./config/database');
 app.use(logger('dev'));
 app.use(express.json());
 
+app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'build')));
+
 if (process.env.NODE_ENV === 'production') {
   app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
   app.use(express.static(path.join(__dirname, 'build')));
 }
 
 // API routes go before...
-app.get('/api/hi', function (req, res) {
-  res.json({ message: 'HELLO' });
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api', function (req, res) {
+  res.status(404).json({ error: 'Resource not found' });
 });
 //...
 

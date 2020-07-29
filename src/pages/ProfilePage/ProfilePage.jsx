@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-function HomePage(){
+function ProfilePage(){
   return (
     <div>
-      {/* <Link></Link> */}
-      Home
+      Details
     </div>
   )
 };
 
-export default HomePage;
+export default ProfilePage;

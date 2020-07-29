@@ -14,6 +14,7 @@ const profileSchema = new Schema(
     role:String,
     graduationYear:String,
     pet:String,
+    mp:String,
   });
 
   module.exports=mongoose.model('Profile', profileSchema);

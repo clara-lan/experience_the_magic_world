@@ -1,12 +1,16 @@
 const Profile = require('../models/Profile');
 
 module.exports={
-
+  createAndUpdate,
+  getProfile,
 };
 
 //create initial version of user profile
-async function create(){
+async function createAndUpdate(){
 
 }
 
-//enable login user to update their profile
+async function getProfile(){
+
+}
+

@@ -14,7 +14,8 @@ const profileSchema = new Schema(
     role:String,
     graduationYear:String,
     pet:String,
-    mp:String,
+    mp:{type:Number, default:5},
+    userId:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
   });
 
   module.exports=mongoose.model('Profile', profileSchema);

@@ -4,16 +4,27 @@ import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import PeoplePage from '../PeoplePage/PeoplePage';
 import { Switch, Route } from 'react-router-dom';
-import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginPage from '../LoginPage/LoginPage';
+import SignupPage from '../SignupPage/SignupPage';
+import userService from '../../utils/userService';
 class App extends Component {
-  constructor(){
-    super();
-  }
+
+  handleLogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+  };
+  
+  handleSignupOrLogin = async () => {
+    this.setState({ user: userService.getUser() });}
+
   render(){
     return (
       <div className="App">
         <header className="App-header">
+          Exlore Your Identity in Magic World
+        </header>
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="/">Magic Adventure</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -25,13 +36,9 @@ class App extends Component {
               <Nav.Link href="/profile">My Profile</Nav.Link>
               <Nav.Link href="/people">Meet People</Nav.Link>
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="outline-success">Search People by Name</Button>
-            </Form>
           </Navbar.Collapse>
         </Navbar>
-        </header>
+        
         <Switch>
           <Route 
             exact
@@ -40,7 +47,21 @@ class App extends Component {
               <HomePage />
             )}
           />
+           <Route 
+            exact
+            path="/login"
+            render={()=>(
+              <LoginPage handleSignupOrLogin={this.handleSignupOrLogin}/>
+            )}
+          />
           <Route 
+            exact
+            path="/signup"
+            render={()=>(
+              <SignupPage handleSignupOrLogin={this.handleSignupOrLogin}/>
+            )}
+          />
+            <Route
             exact
             path="/profile"
             render={()=>(
@@ -54,8 +75,6 @@ class App extends Component {
               <PeoplePage />
             )}
           />
-
-        
         </Switch>
       </div>
     );

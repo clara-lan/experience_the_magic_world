@@ -17,6 +17,10 @@ class App extends Component {
     };
   }
 
+  isLoggedin=()=>{
+    if(this.state.user)return true;
+  }
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -24,6 +28,7 @@ class App extends Component {
   
   handleSignupOrLogin = async () => {
     this.setState({ user: userService.getUser() });}
+  
 
   render(){
     return (
@@ -54,13 +59,24 @@ class App extends Component {
               <SignupPage handleSignupOrLogin={this.handleSignupOrLogin}/>
             )}
           />
-            <Route
+
+          { this.isLoggedin()
+          ?  
+          <Route
             exact
             path={`/${this.state.user.id}/profile`}
             render={()=>(
-              <ProfilePage user={this.state.user}/>
+              <ProfilePage user={this.state.user} isLoggedin={this.isLoggedin}/>
             )}
-          />
+          />:
+          <Route
+          exact
+          path={'/profile'}
+          render={()=>(
+            <ProfilePage isLoggedin={this.isLoggedin}/>
+          )}
+        />
+        }
           <Route
             exact
             path="/people"

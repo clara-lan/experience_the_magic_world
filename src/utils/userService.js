@@ -52,6 +52,7 @@ function getUser() {
 
 function logout() {
   tokenService.removeToken();
+  window.location.href = '/';
 }
 
 export default {

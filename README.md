@@ -5,11 +5,11 @@ Experience In Magic World is an app to enable you experience the magical world o
 ....waiting
 
 ## Technologies Used
-MongoDB
-Express
-React
-Node
-Heroku
+- MongoDB
+- Express
+- React
+- Node
+- Heroku
 
 ## Getting Started
 * [Heroku](https://experience-the-magic-world.herokuapp.com/)

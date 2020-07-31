@@ -17,7 +17,8 @@ class ProfilePage extends Component {
     profileService.getProfile()
     .then(profiles => {
       this.setState({
-        ...this.state,
+        //if future state added, inherited by ...(spreader)
+        // ...this.state,
         items: profiles
       });
     });
@@ -26,6 +27,9 @@ class ProfilePage extends Component {
   render = () => (
     <>
       <div>
+        <ProfileForm user={this.props.user}/>
+      </div>
+      <div className='cardContainer'>
         {this.state.items.map((item,index) => (
           <Card key={index} style={{ width: '18rem' }}>
             <Card.Body>
@@ -37,9 +41,7 @@ class ProfilePage extends Component {
           </Card>
         ))}
       </div>
-      <div>
-        <ProfileForm user={this.props.user}/>
-      </div>
+ 
     </>
   );
 }

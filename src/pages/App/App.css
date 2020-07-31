@@ -10,14 +10,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 20vh;
+  background-image: url("../../images/background.jpg");
+  background-position-y: center;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+#header-text{
+  background-color: brown;
+  color:white;
+  font-size: calc(10px + 4vmin);
+  padding:20px;
 }
 
 .App-link {

@@ -9,6 +9,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import userService from '../../utils/userService';
+
 class App extends Component {
   constructor(){
     super();
@@ -34,7 +35,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          Exlore Your Identity in Magic World
+          <p id="header-text">
+            Exlore Your Identity in Magic World
+          </p>
         </header>
         <NavBar user={this.state.user} handleLogout={this.handleLogout} />
         <Switch>

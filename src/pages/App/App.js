@@ -4,12 +4,18 @@ import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import PeoplePage from '../PeoplePage/PeoplePage';
 import { Switch, Route } from 'react-router-dom';
-import { Nav, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginPage from '../LoginPage/LoginPage';
+import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import userService from '../../utils/userService';
 class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      user: userService.getUser(),
+    };
+  }
 
   handleLogout = () => {
     userService.logout();
@@ -25,26 +31,13 @@ class App extends Component {
         <header className="App-header">
           Exlore Your Identity in Magic World
         </header>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="/">Magic Adventure</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/signup">Signup</Nav.Link>
-              <Nav.Link href="/profile">My Profile</Nav.Link>
-              <Nav.Link href="/people">Meet People</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        
+        <NavBar user={this.state.user} handleLogout={this.handleLogout} />
         <Switch>
           <Route 
             exact
             path="/"
             render={()=>(
-              <HomePage />
+              <HomePage user={this.state.user}/>
             )}
           />
            <Route 
@@ -63,9 +56,9 @@ class App extends Component {
           />
             <Route
             exact
-            path="/profile"
+            path={`/${this.state.user.id}/profile`}
             render={()=>(
-              <ProfilePage />
+              <ProfilePage user={this.state.user}/>
             )}
           />
           <Route

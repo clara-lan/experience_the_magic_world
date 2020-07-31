@@ -11,10 +11,11 @@ module.exports = {
 async function signup(req, res) {
   // password validation here...
   const user = new User(req.body);
+  console.log(user);
   try {
     await user.save();
     const token = createJWT(user);
-    res.json({ token });
+    res.json({ token })
   } catch (err) {
     // Probably a duplicate email
     res.status(400).json(err);

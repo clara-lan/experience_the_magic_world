@@ -18,8 +18,7 @@ class LoginPage extends Component {
     try {
       await userService.login(this.state);
       this.props.handleSignupOrLogin();
-      // Successfully signed up - show GamePage
-      this.props.history.push('/');
+      // this.props.history.push('/');
     } catch (err) {
       console.error(err);
       alert('Invalid Credentials!');

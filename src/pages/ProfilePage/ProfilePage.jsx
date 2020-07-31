@@ -1,9 +1,10 @@
 import React from 'react';
+import ProfileTable from '../../components/ProfileTable/ProfileTable';
 
-function ProfilePage(){
+function ProfilePage(props){
   return (
     <div>
-      Details
+      <ProfileTable user={props.user}/>
     </div>
   )
 };

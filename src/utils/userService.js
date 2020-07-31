@@ -4,19 +4,25 @@ const BASE_URL = '/api/users/';
 
 function signup(user) {
   //send msg to userController.signup
-  return fetch(BASE_URL + 'signup', {
+  fetch(BASE_URL + 'signup', {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json' }),
     body: JSON.stringify(user),
   })
     .then((res) => {
-      if (res.ok) return res.json();
+      if (res.ok) 
+      return res.json();
       // Probably a duplicate email
       throw new Error('Email already taken!');
     })
     .then(({ token }) => {
       tokenService.setToken(token);
-    });
+    })
+    .then(()=>{
+      // redirect to homepage aftersignup
+      window.location.href = '/';
+    })
+    
 }
 
 function login(creds) {
@@ -26,12 +32,18 @@ function login(creds) {
     body: JSON.stringify(creds),
   })
     .then((res) => {
+      //try to catch the err
       if (res.ok) return res.json();
       throw new Error('Bad Credentials');
     })
     .then(({ token }) => {
       tokenService.setToken(token);
-    });
+    })   
+    .then(()=>{
+      // redirect to homepage aftersignup
+      window.location.href = '/';
+    })
+    ;
 }
 
 function getUser() {

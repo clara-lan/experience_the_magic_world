@@ -2,7 +2,7 @@
 Experience In Magic World is an app to enable you experience the magical world of Harry Potter.You can create your personal file to reigster in whatever house you like!
 
 ## Screenshots
-....waiting
+![home page](./src/images/homepage.png)
 
 ## Technologies Used
 - MongoDB

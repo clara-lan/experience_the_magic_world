@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 import "bootstrap/dist/css/bootstrap.css";
+import { Table } from 'react-bootstrap';
 //need to refactor key in product env
 import key from '../../utils/dev';
 
@@ -9,13 +10,16 @@ function PeoplePage(props){
   const [peopleData, setPeopleData] = useState([]);
   const[tableData, setTableData] = useState({});
 
+
   useEffect(()=>{
     fetch(endpoint)
     .then((res)=>res.json())
     .then((res)=>{
       setPeopleData(res);
     })},[]);
-  
+
+
+
   useEffect((peopleData)=>{
       setTableData(
         {columns:[
@@ -46,14 +50,28 @@ function PeoplePage(props){
    
   return (
     <>
-    <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={tableData} searchTop searchBottom={false} />
-    <ul>
+    {/* <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={tableData} searchTop searchBottom={false} /> */}
+    <Table striped bordered hover>
+    <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Role</th>
+      <th>house</th>
+      <th>School</th>
+    </tr>
+  </thead>
+  <tbody>
     {peopleData.map((char,index)=>(
-      <li>
-        {char.name}
-      </li>
+       <tr>
+          <td>{char.name}</td>
+          <td>{char.role}</td>
+          <td>{char.house}</td>
+          <td>{char.school}</td>
+        </tr>
     ))}
-    </ul>
+    </tbody>
+  
+    </Table>
     </>
   )
 };

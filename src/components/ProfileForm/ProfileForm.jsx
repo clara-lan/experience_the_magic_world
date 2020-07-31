@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import profileService from '../../utils/profileService';
 import {Button, Modal} from 'react-bootstrap';
 import './ProfileForm.css';

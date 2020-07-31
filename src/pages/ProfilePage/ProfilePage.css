@@ -1,3 +1,14 @@
+.cardContainer{
+  display: inline-flex;
+  margin-top: 2%;
+}
+
 .Card{
-  display: flex;
+  display: inline-block;
+  margin: 5px;
+}
+
+ul{
+  list-style: none;
+  text-align: center;
 }

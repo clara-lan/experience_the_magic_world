@@ -31,11 +31,24 @@ class ProfilePage extends Component {
       </div>
       <div className='cardContainer'>
         {this.state.items.map((item,index) => (
-          <Card key={index} style={{ width: '18rem' }}>
+          <Card key={index} style={{ width: '18rem' }} >
             <Card.Body>
               <Card.Title>{item.name}</Card.Title>
               <Card.Text>
+                <ul>
+                  <li >
+                    Role:{item.role}
+                  </li>
+                  <li>
+                    House:{item.house}
+                  </li>
+                  <li>
+                    BloodStatus:{item.bloodStatus}
+                  </li>
+                </ul>
               </Card.Text>
+              <Button variant="primary">View Details</Button>
+              &nbsp;
               <Button variant="primary">Delete Profile</Button>
             </Card.Body>
           </Card>

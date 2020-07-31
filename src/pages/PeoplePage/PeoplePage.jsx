@@ -44,14 +44,12 @@ function PeoplePage(props){
 
   },[]);
   
-  // convert peopleData arry to obj
   console.log(peopleData);
 
-   
   return (
-    <>
+    <div className="people-table-container">
     {/* <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={tableData} searchTop searchBottom={false} /> */}
-    <Table striped bordered hover>
+    <Table striped bordered hover size='sm'>
     <thead>
     <tr>
       <th>Full Name</th>
@@ -72,7 +70,7 @@ function PeoplePage(props){
     </tbody>
   
     </Table>
-    </>
+    </div>
   )
 };
 

@@ -8,13 +8,18 @@ module.exports={
 
 //create initial version of user profile
 async function createAndUpdate(req, res){
-  conslo.log(user);
+  console.log(req.body);
+  await Profile.create(req.body);
+  res.json();
 }
 
 async function getProfile(req, res,next){
+  console.log(req.params);
   try{
-    const profile = await Profile.findById({_id:req.body.id});
-    res.redirect(`/${props.user.id}/profile`)
+    //find all the profile with the same userId
+    const profile = await Profile.find({userId:req.params.id});
+    console.log(profile);
+    res.json(profile);
   }catch(err){
     next(err);
   }

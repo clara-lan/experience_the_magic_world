@@ -11,8 +11,7 @@ const NavBar = (props) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-          <span className="NavBar-welcome">WELCOME, {props.user.name}</span>
+          <Nav.Link href="/">WELCOME, {props.user.name}</Nav.Link>
           <Nav.Link href={`/${props.user.id}/profile`}>My Profile</Nav.Link>
           <Nav.Link href="/people">Meet People</Nav.Link>
           <Nav.Link to="" className="NavBar-link" onClick={props.handleLogout}>
